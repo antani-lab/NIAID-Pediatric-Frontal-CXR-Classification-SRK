@@ -1,0 +1,15 @@
+albumentations
+ipython
+matplotlib
+numpy
+opencv-python
+pandas
+Pillow
+pytorch-grad-cam
+pytorch-lightning
+scikit-learn
+timm
+torch
+torchmetrics
+torchsummary
+torchvision
