@@ -23,7 +23,7 @@
 - 🔍 **Explainability:** `jacobgil/pytorch-grad-cam` family (GradCAM, GradCAM++, XGradCAM, EigenCAM, HiResCAM, …).
 - 🔂 **Cross‑Validation:** k‑fold with EarlyStopping + ModelCheckpoint (best by `val_loss`).
 - 📈 **Metrics:** Balanced Accuracy, Sensitivity/Specificity, Precision, F1, MCC, Cohen’s κ, Youden’s J, ROC‑AUC.
-- 🩻 **Reader Study:** Compare the best fold (`based on highest validation Youden J`) to the radiologists.
+- 🩻 **Reader Study:** Compare the best fold (`selected based on the highest validation Youden Index at the fixed 0.5 boundary`) to the radiologists.
 
 
 ---
