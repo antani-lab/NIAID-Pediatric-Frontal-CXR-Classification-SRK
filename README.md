@@ -116,8 +116,7 @@ python train_infer_visualize.py
 ---
 
 ## 🛠️ Troubleshooting
-- ❓ **No checkpoints found:** Verify fold setup and that training completed; filenames follow the template in the notebook.  
-- 🔁 **CSV–folder mismatch:** Ensure `original` names align with files in `data/*/*` and `Cases` map to `tb`.  
+- ❓ **No checkpoints found:** Verify fold setup and that training completed; check filenames.  
 - 🔬 **CAM target not found:** Use a supported backbone; the helper chooses a valid Conv2d or inserts an adapter where needed.  
 - 🧠 **Out‑of‑memory:** Reduce `batch_size` / `img_size` or disable some CAM exports.
 
