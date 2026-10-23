@@ -82,19 +82,11 @@ Edit the `h` dictionary near the top of the notebook:
 
 ## ▶️ Usage
 - **Notebook flow:**
-  - 🏋️ CV training → ✅ Validation/Test inference → 🔥 Explanation → 👩‍⚕️👨‍⚕️ Reader comparison.
+- 🏋️ CV training → ✅ Validation/Test inference → 🔥 Explanation → 👩‍⚕️👨‍⚕️ Reader comparison.
 - **Script mode (optional):**
-  ```bash
-# 1) Create and activate environment (example with conda)
-conda create -n pediatric-cxr python=3.10 -y
-conda activate pediatric-cxr
-
-# 2) Install requirements
-pip install -r requirements.txt
+```bash
+python train_infer_visualize.py
 ```
-  ```bash
- python train_infer_visualize.py
-  ```
 
 ---
 
