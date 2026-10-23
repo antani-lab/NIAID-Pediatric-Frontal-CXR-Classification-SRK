@@ -41,20 +41,19 @@ pip install -r requirements.txt
 ---
 
 ## 🚀 Quick Start
-1. 📓 **Open the notebook:** `train_infer_visualize.ipynb` and run cells in order.  
+1. 📓 **Open the notebook:** `train_infer_visualize.py` and run cells in order.  
 2. ⚙️ **Edit hyperparameters:** Update the `h` dictionary (backbone name, `img_size`, `batch_size`, `n_splits`, `output_dir`, `test_dir`, etc.).  
-3. 🧮 **Build baseline characteristics:** Generates `baseline_characteristics.csv` for Train vs Test cohorts based on the `image_data_github.csv` file.  
-4. 🏋️ **Train with k‑fold CV:** Best checkpoint per fold saved by lowest validation loss; overwrites the previous checkpoint, so we finally have only the best checkpoint saved for a given fold.  
-5. ✅ **Validation/Test inference:** Saves metrics and ROC curves (per fold + combined).  
-6. 🔥 **Explanation:** Exports CAM heatmaps/contours/bounding boxes at original resolution.  
-7. 👩‍⚕️👨‍⚕️ **Radiologist comparison:** Computes metrics and extracts misclassified sets per reader.
+3. 🏋️ **Train with k‑fold CV:** Best checkpoint per fold saved by lowest validation loss; overwrites the previous checkpoint, so we finally have only the best checkpoint saved for a given fold.  
+4. ✅ **Validation/Test inference:** Saves metrics and ROC curves (per fold + combined).  
+5. 🔥 **Explanation:** Exports CAM heatmaps/contours/bounding boxes at original resolution.  
+6. 👩‍⚕️👨‍⚕️ **Radiologist comparison:** Computes metrics and extracts misclassified sets per reader.
 
 ---
 
 ## 🗃️ Data & Layout
 ```
 project/
-├─ train_infer_visualize.ipynb
+├─ train_infer_visualize.py
 ├─ data/
 │  ├─ train/
 │  │  ├─ normal/
@@ -62,10 +61,10 @@ project/
 │  └─ test/
 │     ├─ normal/
 │     └─ tb/
-└─ image_data_github.csv   # metadata (filenames, labels, demographics, reader cols)
+└─ metadata.csv   # metadata (filenames, labels, demographics, reader cols)
 ```
 - 🔎 Only **frontal** images are used for characteristics/splits (filenames contain `-AP` or `-PA`).  
-- 📄 CSV fields typically include: `original`, `Type` (`Cases`/`Controls`), `MC_status`, demographics, and reader predictions: `alopezca_prediction`, `lamorenog_prediction`, `rdmontoyac_prediction`.
+- 📄 CSV fields typically include: `original`, `Type` (`Cases`/`Controls`), `MC_status`, demographics, and reader predictions: `Rad-1`, `Rad-2`, `Rad-3`.
 
 > 🧭 **Class convention:** `class_names = ["normal", "tb"]`; positive class = `tb` (CSV `Type == "Cases"`). Ensure folders and CSV agree.
 
@@ -73,7 +72,7 @@ project/
 
 ## 🧪 Configuration
 Edit the `h` dictionary near the top of the notebook:
-- 🧠 **Model:** `model` (timm backbone), `dropout`, `num_classes=2`
+- 🧠 **Model:** `model` (timm backbone), `dropout (0.3)`, `num_classes=2`
 - 🏋️ **Training:** `img_size`, `batch_size`, `num_workers`, `lr`, `max_epochs`, `patience`, `n_splits`
 - ⚖️ **Imbalance:** `balance=True` → `WeightedRandomSampler`
 - 💾 **IO:** `test_dir`, `output_dir`
@@ -83,11 +82,10 @@ Edit the `h` dictionary near the top of the notebook:
 
 ## ▶️ Usage
 - **Notebook flow:**
-  - 🧮 Baseline table → 🏋️ CV training → ✅ Validation/Test inference → 🔥 Explanation → 👩‍⚕️👨‍⚕️ Reader comparison.
+  - 🏋️ CV training → ✅ Validation/Test inference → 🔥 Explanation → 👩‍⚕️👨‍⚕️ Reader comparison.
 - **Script mode (optional):**
   ```bash
-  jupyter nbconvert --to script train_infer_visualize.ipynb
-  python train_infer_visualize.py
+ python train_infer_visualize.py
   ```
 
 ---
@@ -105,7 +103,6 @@ Edit the `h` dictionary near the top of the notebook:
 │  ├─ combined_test_roc.png
 │  ├─ cam/…                 # heatmaps, masks, contours, bboxes
 │  └─ comparison_to_radiologists/
-└─ baseline_characteristics.csv
 ```
 
 ---
