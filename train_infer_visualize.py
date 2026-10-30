@@ -1862,7 +1862,7 @@ if __name__ == "__main__":
 # ## The code below performs the following:
 # 
 # 1. Computes and compares the best model performance to the individual radiologits. First, identify image filenames with AP, PA, and exclude LAT.
-# 2. Pair against radiologists using the CSV "image_data_github.csv"
+# 2. Pair against radiologists using the metadata CSV
 # 3. Run subgroup analyses under separate directories: Confirmed/ (Confirmed Cases + Controls), Unconfirmed/ (Unconfirmed Cases + Controls), and All/ (All Cases + Controls)
 # 4. For each subgroup, compute + save: confusion matrices (Model, Rad-1, Rad-2, Rad-3), metrics CSV + bar plot + heatmap
 # 5. ROC curve for model (swept threshold) with radiologist operating points annotated by Youden’s J
